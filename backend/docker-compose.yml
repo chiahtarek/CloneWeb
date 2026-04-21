@@ -1,0 +1,72 @@
+networks:
+  app-network:
+    driver: bridge
+services:
+  app:
+    image: node:22-alpine
+    container_name: adonis_dev_app
+    # Mantém o container rodando
+    tty: true
+    # Mapeia a porta 3333 do container para o seu computador (host:container)
+    ports:
+    - "12000:3333"
+    # Espelha a pasta atual (./) para dentro do container (/app)
+    volumes:
+    - ./:/app
+    # Impede que a pasta node_modules do seu PC sobrescreva a do container
+    - /app/node_modules
+    # Define o diretório de trabalho
+    working_dir: /app
+    # Comando que roda quando o container inicia (modo de desenvolvimento)
+    command: sh -c "npm ci && npm run dev"
+    environment:
+    - NODE_ENV=development
+    - PORT=3333
+    - HOST=0.0.0.0
+    - DB_CONNECTION=mysql
+    - MYSQL_HOST=db
+    - MYSQL_PORT=3306
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD=root
+    - MYSQL_DB_NAME=adonis_app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+    - app-network
+  db:
+    image: mysql:8.0
+    container_name: adonis_dev_mysql
+    restart: unless-stopped
+    ports:
+    - "12001:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=adonis_app
+    volumes:
+    - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+    - app-network
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: adonis_dev_phpmyadmin
+    restart: unless-stopped
+    ports:
+    - "12002:80"
+    environment:
+    - PMA_HOST=db
+    - PMA_USER=root
+    - PMA_PASSWORD=root
+    - PMA_DATABASE=adonis_app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+volumes:
+  mysql_data:

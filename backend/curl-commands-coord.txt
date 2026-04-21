@@ -1,0 +1,65 @@
+# REGISTRAR USUÁRIO #
+################### #
+curl -X POST http://localhost:12O00/auth/register \
+-H "Content-Type: application/json" \
+-d '{"fullName": "João Silva", "email": "joao@exemplo.com", "password": "senha123456", "roleId": 1}'
+
+# DADOS DO USUÁRIO AUTENTICADO #
+################################
+curl -X GET http://localhost:12000/auth/me \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
+
+
+# LISTA DE TOKENS #
+###################
+curl -X GET http://localhost:12000/auth/tokens \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
+
+
+# EFETUAR LOGOUT #
+##################
+curl -X POST http://localhost:12000/auth/logout \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
+
+
+# EFETUAR LOGIN #
+#################
+curl -X POST http://localhost:12000/auth/login \
+-H "Content-Type: application/json" \
+-d '{"email": "gil@gmail.com", "password": "1234@5678"}'
+
+
+# LISTAR CURSOS #
+#################
+curl -X GET http://localhost:12000/disciplinas \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
+
+
+# EXIBIR CURSO #
+################
+curl -X GET http://localhost:12000/cursos/1 \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
+
+
+# CRIAR CURSO #
+###############
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM" \
+-d '{"nome": "Técnico em Informática", "duracao": 4}' \
+http://localhost:12000/cursos
+
+
+# EDITAR CURSO #
+################
+curl -X PUT http://localhost:12000/cursos/1 \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM" \
+-d '{"nome": "Tecnólogo em Gestão Ambiental", "duracao": 3}'
+
+# REMOVER CURSO #
+#################
+curl -X DELETE http://localhost:12000/cursos/1 \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer oat_Mg.MG9jZkpIaG9ZcTdId2wtekJwUlhlalBZaS00SmZmd0hCS2lFd1lxTjMzMDQ5OTkyMDM"
