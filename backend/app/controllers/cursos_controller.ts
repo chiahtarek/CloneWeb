@@ -8,9 +8,9 @@ import CursoPolicy from '#policies/curso_policy'
 export default class UsersController extends BasesController<
   CursoService,
   CursoPolicy,
-  { criar: typeof criarCurso, alterar: typeof alterarCurso },
+  { criar: typeof criarCurso, altera: typeof alterarCurso }
 > {
   constructor(service: CursoService, policy: CursoPolicy) {
-    super(service, policy, { criar: criarCurso, alterar: alterarCurso })
+    super(service, policy, { criar: criarCurso, altera: alterarCurso })
   }
 }

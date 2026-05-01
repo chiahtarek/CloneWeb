@@ -1,10 +1,11 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { BaseCrudInterface } from '#controllers/interfaces/base_crud_interface'
 import type { ControllerValidators } from '#controllers/interfaces/validator_inerface'
+import type { BasePolicy } from '#controllers/interfaces/base_policy'
 
 export abstract class BasesController<
   T,
-  P,
+  P extends BasePolicy,
   V extends ControllerValidators,
 > implements BaseCrudInterface {
   // Recebemos o service e o schema do validator no construtor
@@ -92,3 +93,4 @@ export abstract class BasesController<
     })
   }
 }
+

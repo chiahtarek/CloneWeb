@@ -11,6 +11,6 @@ export default class DisciplinasController extends BasesController<
   {criar: typeof criarDisciplina, altera: typeof alterarDisciplina }
 > {
   constructor(service: DisciplinaService, policy: DisciplinaPolicy) {
-    super(service, policy, { criar: criarDisciplina, alterar: alterarDisciplina })
+    super(service, policy, { criar: criarDisciplina, altera: alterarDisciplina })
   }
 }

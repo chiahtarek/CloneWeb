@@ -12,6 +12,7 @@ export const controllers = {
   Disciplinas: () => import('#controllers/disciplinas_controller'),
   interfaces: {
     BaseCrudInterface: () => import('#controllers/interfaces/base_crud_interface'),
+    PolicyInterface: () => import('#controllers/interfaces/policy_interface'),
     ValidatorInerface: () => import('#controllers/interfaces/validator_inerface'),
   },
   Matriculas: () => import('#controllers/matriculas_controller'),

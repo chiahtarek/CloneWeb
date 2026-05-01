@@ -3,9 +3,10 @@ import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { type AccessToken, DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
-import { belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { belongsTo, hasOne } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasOne} from '@adonisjs/lucid/types/relations'
 import Role from '#models/role'
+import Endereco from '#models/endereco'
 // import { column } from '@adonisjs/lucid/orm'
 
 export default class User extends compose(UserSchema, withAuthFinder(hash)) {
@@ -23,4 +24,7 @@ export default class User extends compose(UserSchema, withAuthFinder(hash)) {
   // Relacionamentos
   @belongsTo(() => Role)
   declare role: BelongsTo<typeof Role>
+
+  @hasOne(() => Endereco)
+  declare endereco: HasOne<typeof Endereco>
 }

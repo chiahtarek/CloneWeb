@@ -21,6 +21,26 @@ export class AlunoSchema extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }
+export class EnderecoSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'rua', 'numero', 'cidade', 'estado', 'updatedAt', 'userId'] as const
+  $columns = EnderecoSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare rua: string | null
+  @column()
+  declare numero: number | null
+  @column()
+  declare cidade: string | null
+  @column()
+  declare estado: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
 
 export class AuthAccessTokenSchema extends BaseModel {
   static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const

@@ -1,7 +1,9 @@
+import type { HttpContext } from '@adonisjs/core/http'
+
 export interface BaseCrudInterface {
-  index({ response }: any): Promise<void>
-  store({ request, response }: any): Promise<void>
-  show({ params, response }: any): Promise<void>
-  update({ params, request, response }: any): Promise<void>
-  destroy({ params, response }: any): Promise<boolean>
+  index(ctx: HttpContext): Promise<any>
+  store(ctx: HttpContext): Promise<any>
+  show(ctx: HttpContext): Promise<any>
+  update(ctx: HttpContext): Promise<any>
+  destroy(ctx: HttpContext): Promise<any>
 }
