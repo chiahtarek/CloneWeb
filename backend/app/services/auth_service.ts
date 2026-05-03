@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 import AuthRepository from '#repositories/auth_repository'
+import ContaRepository from '#repositories/conta_repository'
 import { inject } from '@adonisjs/core'
 import Endereco from '#models/endereco'
 import type {
@@ -14,9 +15,11 @@ import type {
 @inject()
 export class AuthService {
   protected repository: AuthRepository
+  protected contaRepository: ContaRepository 
 
-  constructor(repository: AuthRepository) {
+  constructor(repository: AuthRepository, contaRepository: ContaRepository) {
     this.repository = repository
+    this.contaRepository = contaRepository
   }
 
   async register(payload: PayloadUser): Promise<any> {
@@ -28,11 +31,12 @@ export class AuthService {
   console.log('🔥 ENDERECO:', payload.endereco)
 
   if (endereco) {
+      await user.related('endereco').create(endereco)
+  } 
 
-    await user.related('endereco').create(endereco)
-  } else {
-    
-  }
+    const conta = await this.contaRepository.create({
+      userId: user.id, // vincula a conta ao usuário
+    })
 
   return user
 

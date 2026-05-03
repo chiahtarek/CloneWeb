@@ -2,6 +2,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 import  Endereco  from './endereco.js'
 import type { HasOne } from '@adonisjs/lucid/types/relations'
+import Conta from './conta.js'
 import { hasOne } from '@adonisjs/lucid/orm'
 
 export default class User extends BaseModel {
@@ -28,4 +29,7 @@ export default class User extends BaseModel {
 
   @hasOne(() => Endereco)
   declare endereco: HasOne<typeof Endereco>
+
+   @hasOne(() => Conta)
+  declare conta: HasOne<typeof Conta>
 }
