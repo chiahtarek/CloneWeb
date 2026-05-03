@@ -1,26 +1,33 @@
 import vine from '@vinejs/vine'
+import db from '@adonisjs/lucid/services/db'
 
-/**
- * Shared rules for email and password.
- */
-const email = () => vine.string().email().maxLength(254)
-const password = () => vine.string().minLength(8).maxLength(32)
+export const registerValidator = vine.compile(
+  vine.object({
+    fullName: vine.string().trim().minLength(2).maxLength(100).optional(),
 
-/**
- * Validator to use when performing self-signup
- */
-export const signupValidator = vine.create({
-  fullName: vine.string().nullable(),
-  email: email().unique({ table: 'users', column: 'email' }),
-  password: password(),
-  passwordConfirmation: password().sameAs('password'),
-})
+    email: vine
+      .string()
+      .email()
+      .normalizeEmail()
+      .unique(async (db, value) => {
+       const user = await db.from('users').where('email', value).first()
+        return !user
+      }),
 
-/**
- * Validator to use before validating user credentials
- * during login
- */
-export const loginValidator = vine.create({
-  email: email(),
-  password: vine.string(),
-})
+    password: vine.string().minLength(8).maxLength(32),
+
+    roleId: vine.number().exists(async (db, value) => {
+      const role = await db.from('roles').where('id', value).first()
+      return !!role
+    }),
+
+    endereco: vine
+      .object({
+        rua: vine.string().optional(),
+        numero: vine.number().optional(),
+        cidade: vine.string().optional(),
+        estado: vine.string().optional(),
+      })
+      .optional(),
+  })
+)

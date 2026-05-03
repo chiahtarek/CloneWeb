@@ -1,5 +1,7 @@
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { DateTime } from 'luxon'
+
 import User from '#models/user'
 
 export default class Endereco extends BaseModel {
@@ -18,11 +20,19 @@ export default class Endereco extends BaseModel {
   @column()
   declare estado: string | null
 
-  // FK
-  @column()
+  // FK correta
+  @column({ columnName: 'user_id' })
   declare userId: number
 
-  // RELAÇÃO (endereço pertence a user)
-  @belongsTo(() => User)
+  // relacionamento obrigatório
+  @belongsTo(() => User, {
+    foreignKey: 'userId',
+  })
   declare user: BelongsTo<typeof User>
+
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
 }

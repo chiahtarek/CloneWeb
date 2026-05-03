@@ -1,7 +1,14 @@
 export interface PayloadUser {
-  fullName?: string | undefined
+  fullName?: string
   email: string
   password: string
+  roleId?: number
+  endereco?: {
+    rua?: string
+    numero?: number
+    cidade?: string
+    estado?: string
+  }
 }
 
 export interface LoginInput {

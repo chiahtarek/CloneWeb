@@ -21,26 +21,6 @@ export class AlunoSchema extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }
-export class EnderecoSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'rua', 'numero', 'cidade', 'estado', 'updatedAt', 'userId'] as const
-  $columns = EnderecoSchema.$columns
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime | null
-  @column({ isPrimary: true })
-  declare id: number
-  @column()
-  declare rua: string | null
-  @column()
-  declare numero: number | null
-  @column()
-  declare cidade: string | null
-  @column()
-  declare estado: string | null
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
-  @column()
-  declare userId: number
-}
 
 export class AuthAccessTokenSchema extends BaseModel {
   static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
@@ -99,6 +79,38 @@ export class DisciplinaSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class EnderecoSchema extends BaseModel {
+  static $columns = ['cidade', 'createdAt', 'estado', 'id', 'numero', 'rua', 'updatedAt', 'userId'] as const
+  $columns = EnderecoSchema.$columns
+  @column()
+  declare cidade: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare estado: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare numero: number | null
+  @column()
+  declare rua: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number | null
+}
+
+export class FixEnderecosUserFkSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'updatedAt'] as const
+  $columns = FixEnderecosUserFkSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class MatriculaSchema extends BaseModel {
   static $columns = ['alunoId', 'createdAt', 'disciplinaId', 'id', 'updatedAt'] as const
   $columns = MatriculaSchema.$columns
@@ -123,6 +135,17 @@ export class RoleSchema extends BaseModel {
   declare id: number
   @column()
   declare nome: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class RunSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'updatedAt'] as const
+  $columns = RunSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }

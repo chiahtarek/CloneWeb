@@ -1,13 +1,19 @@
-import { AlunoSchema } from '#database/schema'
-import { belongsTo, manyToMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
-import Curso from '#models/curso'
-import Disciplina from '#models/disciplina'
+import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { DateTime } from 'luxon'
 
-export default class Aluno extends AlunoSchema {
-  @belongsTo(() => Curso)
-  declare curso: BelongsTo<typeof Curso>
+export default class Aluno extends BaseModel {
+  @column({ isPrimary: true })
+  declare id: number
 
-  @manyToMany(() => Disciplina)
-  declare disciplinas: ManyToMany<typeof Disciplina>
+  @column()
+  declare nome: string | null
+
+  @column()
+  declare cursoId: number | null
+
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
 }

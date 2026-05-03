@@ -1,13 +1,19 @@
-import { MatriculaSchema } from '#database/schema'
-import { belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import Aluno from '#models/aluno'
-import Disciplina from '#models/disciplina'
+import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { DateTime } from 'luxon'
 
-export default class Matricula extends MatriculaSchema {
-  @belongsTo(() => Aluno)
-  declare aluno: BelongsTo<typeof Aluno>
+export default class Matricula extends BaseModel {
+  @column({ isPrimary: true })
+  declare id: number
 
-  @belongsTo(() => Disciplina)
-  declare disciplina: BelongsTo<typeof Disciplina>
+  @column()
+  declare alunoId: number | null
+
+  @column()
+  declare disciplinaId: number | null
+
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
 }

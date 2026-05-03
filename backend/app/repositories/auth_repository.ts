@@ -11,7 +11,15 @@ import { permissions } from '#utils/permissions'
 
 export default class AuthRepository {
   async createUser(payload: PayloadUser): Promise<any> {
-    const user = await User.create(payload)
+    const { endereco, ...userData } = payload
+
+    const user = await User.create(userData)
+
+    if (endereco) {
+      await user.related('endereco').create(endereco)
+    }
+
+    //return user
     // user: usuário logado;
     // *: coringa, token pode acessar todas as rotas protegidas;
     const token = await User.accessTokens.create(user, ['*'], {
@@ -21,19 +29,13 @@ export default class AuthRepository {
 
     return {
       message: 'Usuário registrado com sucesso',
-      user: {
-        id: user.id,
-        fullName: user.fullName,
-        roleId: user.roleId,
-        email: user.email,
-        createdAt: user.createdAt,
-      },
+      user,
+      endereco,
       token: {
-        type: 'bearer', // padrão (OAuth 2.0) tipo de token que cliente
-        value: token.value!.release(), // string limpa e utilizável pelo cliente
-        expiresAt: token.expiresAt, // data e hora da expiração do token;
+        type: 'bearer',
+        value: token.value!.release(),
+        expiresAt: token.expiresAt,
       },
-      permissions: { ...this.getFormatedPermissions(user) },
     }
   }
 

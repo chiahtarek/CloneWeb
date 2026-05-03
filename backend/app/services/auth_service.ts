@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 import AuthRepository from '#repositories/auth_repository'
 import { inject } from '@adonisjs/core'
+import Endereco from '#models/endereco'
 import type {
   PayloadUser,
   LoginInput,
@@ -19,8 +20,23 @@ export class AuthService {
   }
 
   async register(payload: PayloadUser): Promise<any> {
-    return this.repository.createUser(payload)
+
+  const { endereco, ...userData } = payload
+
+  const user = await User.create(userData)
+  console.log('🔥 PAYLOAD COMPLETO:', JSON.stringify(payload, null, 2))
+  console.log('🔥 ENDERECO:', payload.endereco)
+
+  if (endereco) {
+
+    await user.related('endereco').create(endereco)
+  } else {
+    
   }
+
+  return user
+
+}
   async login(payload: LoginInput): Promise<LoginOutput> {
     return this.repository.authenticateUser(payload)
   }
