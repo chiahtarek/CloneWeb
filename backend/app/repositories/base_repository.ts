@@ -33,8 +33,8 @@ export abstract class BaseRepository<T extends LucidRow> implements BaseReposito
     return await query
   }
 
-  async create(payload: Partial<T>): Promise<T> {
-    return this.model.create(payload) as Promise<T>
+  async create(payload: Partial<T>, trx?: any): Promise<T> {
+    return this.model.create(payload, { client: trx }) as Promise<T>
   }
 
   async update(id: number | string, payload: Partial<T>): Promise<T> {
