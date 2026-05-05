@@ -1,5 +1,6 @@
 import Conta from '#models/conta'
 import { BaseRepository } from '#repositories/base_repository'
+import db from '@adonisjs/lucid/services/db'
 
 export default class ContaRepository extends BaseRepository<Conta> {
   constructor() {
@@ -21,4 +22,45 @@ export default class ContaRepository extends BaseRepository<Conta> {
 
     return super.create(payloadWithDefaults)
   }
+  async transfer(fromId: number, toId: number, amount: number): Promise<void> {
+    if (amount <= 0) {
+      throw new Error('Valor da transferência deve ser maior que zero')
+    }
+
+    if (fromId === toId) {
+      throw new Error('Não é possível transferir para a mesma conta')
+    }
+
+    await db.transaction(async (trx) => {
+      // Lock nas contas (evita concorrência)
+      const fromAccount = await Conta
+        .query({ client: trx })
+        .where('id', fromId)
+        .forUpdate()
+        .first()
+
+      const toAccount = await Conta
+        .query({ client: trx })
+        .where('id', toId)
+        .forUpdate()
+        .first()
+
+      if (!fromAccount || !toAccount) {
+        throw new Error('Conta de origem ou destino não encontrada')
+      }
+
+      if (fromAccount.saldo < amount) {
+        throw new Error('Saldo insuficiente')
+      }
+
+      // Atualiza os saldos
+      fromAccount.saldo = Number(fromAccount.saldo) - amount
+      toAccount.saldo = Number(toAccount.saldo) + amount
+
+      await fromAccount.useTransaction(trx).save()
+      await toAccount.useTransaction(trx).save()
+    })
+  }
+
+
 }

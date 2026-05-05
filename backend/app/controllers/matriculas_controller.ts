@@ -11,6 +11,6 @@ export default class MatriculasController extends BasesController<
   {criar: typeof criarMatricula, altera: typeof criarMatricula }
 >{
   constructor(service: MatriculaService, policy: MatriculaPolicy) {
-    super(service, policy, { criar: criarMatricula, alterar: criarMatricula })
+    super(service, policy, { criar: criarMatricula, altera: criarMatricula })
   }
 }

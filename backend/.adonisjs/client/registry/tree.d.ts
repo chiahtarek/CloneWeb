@@ -38,6 +38,9 @@ export interface ApiDefinition {
     update: typeof routes['matriculas.update']
     destroy: typeof routes['matriculas.destroy']
   }
+  conta: {
+    transfer: typeof routes['conta.transfer']
+  }
   auth: {
     register: typeof routes['auth.register']
     login: typeof routes['auth.login']

@@ -174,6 +174,12 @@ const routes = {
     tokens: [{"old":"/matriculas/:id","type":0,"val":"matriculas","end":""},{"old":"/matriculas/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['matriculas.destroy']['types'],
   },
+  'conta.transfer': {
+    methods: ["POST"],
+    pattern: '/transfer',
+    tokens: [{"old":"/transfer","type":0,"val":"transfer","end":""}],
+    types: placeholder as Registry['conta.transfer']['types'],
+  },
   'auth.register': {
     methods: ["POST"],
     pattern: '/auth/register',

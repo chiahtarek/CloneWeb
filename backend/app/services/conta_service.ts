@@ -9,4 +9,8 @@ export class ContaService extends BaseCrudService<Conta, ContaRepository> {
   constructor(repository: ContaRepository) {
     super(repository)
   }
+  async transfer(fromId: number, toId: number, amount: number): Promise<void> {
+    return this.repository.transfer(fromId, toId, amount)
+  }
+
 }

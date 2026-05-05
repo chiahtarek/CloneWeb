@@ -18,6 +18,7 @@ router.resource('cursos', '#controllers/cursos_controller').use('*', middleware.
 router.resource('alunos', '#controllers/alunos_controller').use('*', middleware.auth())
 router.resource('disciplinas', '#controllers/disciplinas_controller').use('*', middleware.auth())
 router.resource('matriculas', '#controllers/matriculas_controller').use('*', middleware.auth())
+router.post('/transfer','#controllers/conta_controller.transfer')
 // Matrículas
 // router.get('matriculas', '#controllers/matriculas_controller.index')
 // router.post('matriculas', '#controllers/matriculas_controller.store')

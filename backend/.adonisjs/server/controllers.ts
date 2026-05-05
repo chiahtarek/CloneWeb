@@ -8,6 +8,7 @@ export const controllers = {
   Alunos: () => import('#controllers/alunos_controller'),
   Auth: () => import('#controllers/auth_controller'),
   Bases: () => import('#controllers/bases_controller'),
+  Conta: () => import('#controllers/conta_controller'),
   Cursos: () => import('#controllers/cursos_controller'),
   Disciplinas: () => import('#controllers/disciplinas_controller'),
   interfaces: {

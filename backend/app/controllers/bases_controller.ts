@@ -64,7 +64,7 @@ export abstract class BasesController<
     if (!this.policy.edit(auth.user)) {
       return response.forbidden({ message: 'Você não tem permissão para modificar esse recurso!' })
     }
-    const payload = await request.validateUsing(this.validators.alterar)
+    const payload = await request.validateUsing(this.validators.altera)
     const data = await (this.service as any).update(Number(params.id), payload)
     if (!data) {
       return response.status(422).json({

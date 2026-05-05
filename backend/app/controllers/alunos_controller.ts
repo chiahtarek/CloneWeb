@@ -11,6 +11,6 @@ export default class AlunosController extends BasesController<
   {criar: typeof criarAluno, altera: typeof alterarAluno }
 >{
   constructor(service: AlunoService, policy: AlunoPolicy) {
-    super(service, policy, { criar: criarAluno, alterar: alterarAluno })
+    super(service, policy, { criar: criarAluno, altera: alterarAluno })
   }
 }

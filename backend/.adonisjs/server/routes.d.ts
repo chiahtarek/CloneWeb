@@ -32,6 +32,7 @@ export type ScannedRoutes = {
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.transfer': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.logout': { paramsTuple?: []; params?: {} }
@@ -84,6 +85,7 @@ export type ScannedRoutes = {
     'alunos.store': { paramsTuple?: []; params?: {} }
     'disciplinas.store': { paramsTuple?: []; params?: {} }
     'matriculas.store': { paramsTuple?: []; params?: {} }
+    'conta.transfer': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.logout': { paramsTuple?: []; params?: {} }

@@ -343,6 +343,18 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'conta.transfer': {
+    methods: ["POST"]
+    pattern: '/transfer'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'auth.register': {
     methods: ["POST"]
     pattern: '/auth/register'
