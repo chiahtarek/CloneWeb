@@ -15,7 +15,7 @@ import type {
 @inject()
 export class AuthService {
   protected repository: AuthRepository
-  protected contaRepository: ContaRepository 
+  protected contaRepository: ContaRepository
 
   constructor(repository: AuthRepository, contaRepository: ContaRepository) {
     this.repository = repository
@@ -24,23 +24,21 @@ export class AuthService {
 
   async register(payload: PayloadUser): Promise<any> {
 
-  const { endereco, ...userData } = payload
+    const { endereco, ...userData } = payload
 
-  const user = await User.create(userData)
-  console.log('🔥 PAYLOAD COMPLETO:', JSON.stringify(payload, null, 2))
-  console.log('🔥 ENDERECO:', payload.endereco)
+    const user = await User.create(userData)
 
-  if (endereco) {
+    if (endereco) {
       await user.related('endereco').create(endereco)
-  } 
+    }
 
     const conta = await this.contaRepository.create({
       userId: user.id, // vincula a conta ao usuário
     })
 
-  return user
+    return user
 
-}
+  }
   async login(payload: LoginInput): Promise<LoginOutput> {
     return this.repository.authenticateUser(payload)
   }

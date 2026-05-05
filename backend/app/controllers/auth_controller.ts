@@ -1,6 +1,6 @@
   import { inject } from '@adonisjs/core'
   import type { HttpContext } from '@adonisjs/core/http'
-  import { registerValidator } from '#validators/auth'
+  import { registerValidator, loginValidator } from '#validators/auth'
   import { AuthService } from '#services/auth_service'
 
   @inject()
@@ -22,7 +22,7 @@
       })
     }
 
-    /* Efetuar Autenticação do Usuário 
+ 
     async login({ request, response }: HttpContext) {
       const { email, password } = await request.validateUsing(loginValidator)
       const resp = await this.service.login({ email, password })
