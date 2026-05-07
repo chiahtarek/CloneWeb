@@ -10,6 +10,7 @@ import Disciplinas from './pages/disciplinas'
 import DisciplinasCreate from './pages/disciplinas/create'
 import DisciplinasEdit from './pages/disciplinas/edit'
 import Register from './pages/register'
+import Transfer from "./pages/transfer"
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
     {
         path:"/register",
         element: <Register/>
+    }, 
+    {
+        path:"/transfer", 
+        element: <Transfer/>
     }
 ])
 
