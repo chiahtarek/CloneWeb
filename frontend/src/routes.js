@@ -9,6 +9,7 @@ import CursosEdit from './pages/cursos/edit'
 import Disciplinas from './pages/disciplinas'
 import DisciplinasCreate from './pages/disciplinas/create'
 import DisciplinasEdit from './pages/disciplinas/edit'
+import Register from './pages/register'
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         path: "/disciplinas/edit", 
         element: <DisciplinasEdit />,
     },
+    {
+        path:"/register",
+        element: <Register/>
+    }
 ])
 
 export default router
