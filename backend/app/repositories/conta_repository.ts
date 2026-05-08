@@ -1,6 +1,7 @@
 import Conta from '#models/conta'
 import { BaseRepository } from '#repositories/base_repository'
 import db from '@adonisjs/lucid/services/db'
+import { TransactionClientContract } from '@adonisjs/lucid/types/database'
 
 export default class ContaRepository extends BaseRepository<Conta> {
   constructor() {
@@ -22,7 +23,7 @@ export default class ContaRepository extends BaseRepository<Conta> {
 
     return super.create(payloadWithDefaults)
   }
-  async transfer(fromId: number, toId: number, amount: number): Promise<void> {
+  async transfer(fromId: number, toId: number, amount: number, trx: TransactionClientContract): Promise<void> {
     if (amount <= 0) {
       throw new Error('Valor da transferência deve ser maior que zero')
     }
@@ -31,7 +32,7 @@ export default class ContaRepository extends BaseRepository<Conta> {
       throw new Error('Não é possível transferir para a mesma conta')
     }
 
-    await db.transaction(async (trx) => {
+    
       // Lock nas contas (evita concorrência)
       const fromAccount = await Conta
         .query({ client: trx })
@@ -59,7 +60,7 @@ export default class ContaRepository extends BaseRepository<Conta> {
 
       await fromAccount.useTransaction(trx).save()
       await toAccount.useTransaction(trx).save()
-    })
+  
   }
 
 

@@ -174,6 +174,48 @@ const routes = {
     tokens: [{"old":"/matriculas/:id","type":0,"val":"matriculas","end":""},{"old":"/matriculas/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['matriculas.destroy']['types'],
   },
+  'conta.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/conta',
+    tokens: [{"old":"/conta","type":0,"val":"conta","end":""}],
+    types: placeholder as Registry['conta.index']['types'],
+  },
+  'conta.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/conta/create',
+    tokens: [{"old":"/conta/create","type":0,"val":"conta","end":""},{"old":"/conta/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['conta.create']['types'],
+  },
+  'conta.store': {
+    methods: ["POST"],
+    pattern: '/conta',
+    tokens: [{"old":"/conta","type":0,"val":"conta","end":""}],
+    types: placeholder as Registry['conta.store']['types'],
+  },
+  'conta.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/conta/:id',
+    tokens: [{"old":"/conta/:id","type":0,"val":"conta","end":""},{"old":"/conta/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['conta.show']['types'],
+  },
+  'conta.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/conta/:id/edit',
+    tokens: [{"old":"/conta/:id/edit","type":0,"val":"conta","end":""},{"old":"/conta/:id/edit","type":1,"val":"id","end":""},{"old":"/conta/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['conta.edit']['types'],
+  },
+  'conta.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/conta/:id',
+    tokens: [{"old":"/conta/:id","type":0,"val":"conta","end":""},{"old":"/conta/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['conta.update']['types'],
+  },
+  'conta.destroy': {
+    methods: ["DELETE"],
+    pattern: '/conta/:id',
+    tokens: [{"old":"/conta/:id","type":0,"val":"conta","end":""},{"old":"/conta/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['conta.destroy']['types'],
+  },
   'conta.transfer': {
     methods: ["POST"],
     pattern: '/transfer',

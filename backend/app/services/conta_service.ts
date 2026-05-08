@@ -8,15 +8,46 @@ import db from '@adonisjs/lucid/services/db'
 @inject()
 export class ContaService extends BaseCrudService<Conta, ContaRepository> {
   // Your code here
-  constructor(repository: ContaRepository,  private extratoRepository: ExtratoRepository) {
+  constructor(repository: ContaRepository, private extratoRepository: ExtratoRepository) {
     super(repository)
   }
-  async transfer(fromId: number, toId: number, amount: number): Promise<void> {
+  async transfer(userId: number, numeroConta: String, amount: number): Promise<void> {
     await db.transaction(async (trx) => {
-    await this.repository.transfer(fromId, toId, amount)
+      const fromAccount = await Conta
+        .query({ client: trx })
+        .where('user_id', userId)
+        .first()
 
-    await this.extratoRepository.createExtrato('pix', amount, trx)
-  })
+      if (!fromAccount) {
+        throw new Error('Conta do usuário não encontrada')
+      }
+
+      // conta destino pelo número
+      const toAccount = await Conta
+        .query({ client: trx })
+        .where('conta', Number(numeroConta))
+        .first()
+
+      if (!toAccount) {
+        throw new Error('Conta destino não encontrada')
+      }
+
+      await this.repository.transfer(
+        fromAccount.id,
+        toAccount.id,
+        amount,
+        trx
+      )
+
+      await this.extratoRepository.createExtrato(
+        'pix',
+        amount,
+        trx
+      )
+
+
+
+    })
   }
 
 }

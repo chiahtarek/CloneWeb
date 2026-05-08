@@ -39,6 +39,13 @@ export interface ApiDefinition {
     destroy: typeof routes['matriculas.destroy']
   }
   conta: {
+    index: typeof routes['conta.index']
+    create: typeof routes['conta.create']
+    store: typeof routes['conta.store']
+    show: typeof routes['conta.show']
+    edit: typeof routes['conta.edit']
+    update: typeof routes['conta.update']
+    destroy: typeof routes['conta.destroy']
     transfer: typeof routes['conta.transfer']
   }
   auth: {

@@ -343,6 +343,90 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'conta.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/conta'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/conta/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.store': {
+    methods: ["POST"]
+    pattern: '/conta'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/conta/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/conta/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/conta/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'conta.destroy': {
+    methods: ["DELETE"]
+    pattern: '/conta/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'conta.transfer': {
     methods: ["POST"]
     pattern: '/transfer'

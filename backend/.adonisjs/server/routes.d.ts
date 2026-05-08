@@ -32,6 +32,13 @@ export type ScannedRoutes = {
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.index': { paramsTuple?: []; params?: {} }
+    'conta.create': { paramsTuple?: []; params?: {} }
+    'conta.store': { paramsTuple?: []; params?: {} }
+    'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'conta.transfer': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
     'auth.login': { paramsTuple?: []; params?: {} }
@@ -57,6 +64,10 @@ export type ScannedRoutes = {
     'matriculas.create': { paramsTuple?: []; params?: {} }
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.index': { paramsTuple?: []; params?: {} }
+    'conta.create': { paramsTuple?: []; params?: {} }
+    'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'auth.me': { paramsTuple?: []; params?: {} }
     'auth.tokens': { paramsTuple?: []; params?: {} }
   }
@@ -77,6 +88,10 @@ export type ScannedRoutes = {
     'matriculas.create': { paramsTuple?: []; params?: {} }
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.index': { paramsTuple?: []; params?: {} }
+    'conta.create': { paramsTuple?: []; params?: {} }
+    'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'auth.me': { paramsTuple?: []; params?: {} }
     'auth.tokens': { paramsTuple?: []; params?: {} }
   }
@@ -85,6 +100,7 @@ export type ScannedRoutes = {
     'alunos.store': { paramsTuple?: []; params?: {} }
     'disciplinas.store': { paramsTuple?: []; params?: {} }
     'matriculas.store': { paramsTuple?: []; params?: {} }
+    'conta.store': { paramsTuple?: []; params?: {} }
     'conta.transfer': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
     'auth.login': { paramsTuple?: []; params?: {} }
@@ -96,18 +112,21 @@ export type ScannedRoutes = {
     'alunos.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'disciplinas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PATCH: {
     'cursos.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'alunos.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'disciplinas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'cursos.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'alunos.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'disciplinas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'conta.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

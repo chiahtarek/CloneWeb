@@ -42,6 +42,31 @@ export default function FormRegister({ data, onChange, onSubmit }) {
         value={data.password}
         onChange={(e) => onChange('password', e.target.value)}
       />
+      <Label>Rua</Label>
+      <Input
+        type="rua"
+        value={data.endereco.rua}
+        onChange={(e) => onChange('rua', e.target.value)}
+      />
+      <Label>Número</Label>
+      <Input
+        type="numero"
+        value={data.endereco.numero}
+        onChange={(e) => onChange('numero', e.target.value)}
+      />
+      <Label>Cidade</Label>
+      <Input
+      
+        type="cidade"
+        value={data.endereco.cidade}
+        onChange={(e) => onChange('cidade', e.target.value)}
+      />
+      <Label>Bairro</Label>
+      <Input
+        type="bairro"
+        value={data.endereco.bairro}
+        onChange={(e) => onChange('bairro', e.target.value)}
+      />
 
       <Label>Tipo de usuário</Label>
       <Select

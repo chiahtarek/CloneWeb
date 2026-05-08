@@ -22,18 +22,12 @@ export default function FormTransfer({ data, onChange, onSubmit }) {
       <Title>Transferência</Title>
       <SubTitle>Envie dinheiro com segurança</SubTitle>
 
-      <Label>Seu ID</Label>
-      <Input
-        type="number"
-        value={data.senderId}
-        onChange={(e) => onChange('fromId', Number(e.target.value))}
-      />
 
-      <Label>ID do destinatário</Label>
+      <Label>Número Conta Destinatário</Label>
       <Input
         type="number"
-        value={data.receiverId}
-        onChange={(e) => onChange('toId', Number(e.target.value))}
+        value={data.numeroConta}
+        onChange={(e) => onChange('numeroConta', Number(e.target.value))}
       />
 
       <Label>Valor</Label>

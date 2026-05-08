@@ -1,37 +1,49 @@
 import { ContaService } from "#services/conta_service";
 import { inject } from '@adonisjs/core'
 import { HttpContext } from "@adonisjs/core/http";
+import { AuthService } from "#services/auth_service";
+import auth from "@adonisjs/auth/services/main";
+
+
 
 @inject()
 export default class ContaController {
     protected contaService: ContaService
+    protected authService: AuthService
 
-    constructor(contaService: ContaService) {
+    constructor(contaService: ContaService, authService: AuthService) {
         this.contaService = contaService
+        this.authService = authService
     }
 
-    async transfer({ request, response }: HttpContext) {
+    async transfer(ctx: HttpContext) {
         try {
-            const { fromId, toId, amount } = request.only([
-                'fromId',
-                'toId',
+            const authUser = await this.authService.user(ctx)
+
+            const userId = authUser.user.id
+
+            const { numeroConta, amount } = ctx.request.only([
+                'numeroConta',
                 'amount',
             ])
 
-            // validação básica (você pode evoluir isso depois com validator)
-            if (!fromId || !toId || !amount) {
-                return response.badRequest({
-                    message: 'fromId, toId e amount são obrigatórios',
+            if (!numeroConta || !amount) {
+                return ctx.response.badRequest({
+                    message: 'numeroConta e amount são obrigatórios',
                 })
             }
 
-            await this.contaService.transfer(fromId, toId, amount)
+            await this.contaService.transfer(
+                userId,
+                numeroConta,
+                amount
+            )
 
-            return response.ok({
+            return ctx.response.ok({
                 message: 'Transferência realizada com sucesso',
             })
         } catch (error: any) {
-            return response.badRequest({
+            return ctx.response.badRequest({
                 message: error.message,
             })
         }
