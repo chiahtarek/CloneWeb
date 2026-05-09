@@ -32,35 +32,47 @@ export default class ContaRepository extends BaseRepository<Conta> {
       throw new Error('Não é possível transferir para a mesma conta')
     }
 
-    
-      // Lock nas contas (evita concorrência)
-      const fromAccount = await Conta
-        .query({ client: trx })
-        .where('id', fromId)
-        .forUpdate()
-        .first()
 
-      const toAccount = await Conta
-        .query({ client: trx })
-        .where('id', toId)
-        .forUpdate()
-        .first()
+    // Lock nas contas (evita concorrência)
+    const fromAccount = await Conta
+      .query({ client: trx })
+      .where('id', fromId)
+      .forUpdate()
+      .first()
 
-      if (!fromAccount || !toAccount) {
-        throw new Error('Conta de origem ou destino não encontrada')
-      }
+    const toAccount = await Conta
+      .query({ client: trx })
+      .where('id', toId)
+      .forUpdate()
+      .first()
 
-      if (fromAccount.saldo < amount) {
-        throw new Error('Saldo insuficiente')
-      }
+    if (!fromAccount || !toAccount) {
+      throw new Error('Conta de origem ou destino não encontrada')
+    }
 
-      // Atualiza os saldos
-      fromAccount.saldo = Number(fromAccount.saldo) - amount
-      toAccount.saldo = Number(toAccount.saldo) + amount
+    if (fromAccount.saldo < amount) {
+      throw new Error('Saldo insuficiente')
+    }
 
-      await fromAccount.useTransaction(trx).save()
-      await toAccount.useTransaction(trx).save()
-  
+    // Atualiza os saldos
+    fromAccount.saldo = Number(fromAccount.saldo) - amount
+    toAccount.saldo = Number(toAccount.saldo) + amount
+
+    await fromAccount.useTransaction(trx).save()
+    await toAccount.useTransaction(trx).save()
+
+  }
+  async getSaldoByUserId(userId: number): Promise<number> {
+    const conta = await Conta
+      .query()
+      .where('user_id', userId)
+      .first()
+
+    if (!conta) {
+      throw new Error('Conta não encontrada para este usuário')
+    }
+
+    return Number(conta.saldo)
   }
 
 

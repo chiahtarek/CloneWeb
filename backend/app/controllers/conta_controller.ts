@@ -48,6 +48,23 @@ export default class ContaController {
             })
         }
     }
+    async saldo(ctx: HttpContext) {
+        try {
+            const authUser = await this.authService.user(ctx)
+
+            const userId = authUser.user.id
+
+            const saldo = await this.contaService.getSaldo(userId)
+
+            return ctx.response.ok({
+                saldo,
+            })
+        } catch (error: any) {
+            return ctx.response.badRequest({
+                message: error.message,
+            })
+        }
+    }
 
 
 }

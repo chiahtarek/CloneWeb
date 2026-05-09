@@ -12,6 +12,7 @@ import DisciplinasEdit from './pages/disciplinas/edit'
 import Register from './pages/register'
 import Transfer from "./pages/transfer"
 import Extrato from "./pages/extrato"
+import Saldo from "./pages/saldo"
 
 
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
     {
         path:"/transfers", 
         element: <Extrato/>
+    }, 
+    {
+        path:"/saldo",
+        element:<Saldo/>
     }
 ])
 

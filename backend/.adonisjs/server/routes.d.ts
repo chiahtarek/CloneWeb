@@ -33,6 +33,7 @@ export type ScannedRoutes = {
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'extrato.list': { paramsTuple?: []; params?: {} }
+    'conta.saldo': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.store': { paramsTuple?: []; params?: {} }
@@ -66,6 +67,7 @@ export type ScannedRoutes = {
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'extrato.list': { paramsTuple?: []; params?: {} }
+    'conta.saldo': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
@@ -91,6 +93,7 @@ export type ScannedRoutes = {
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'extrato.list': { paramsTuple?: []; params?: {} }
+    'conta.saldo': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

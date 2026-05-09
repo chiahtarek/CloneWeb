@@ -19,6 +19,7 @@ router.resource('alunos', '#controllers/alunos_controller').use('*', middleware.
 router.resource('disciplinas', '#controllers/disciplinas_controller').use('*', middleware.auth())
 router.resource('matriculas', '#controllers/matriculas_controller').use('*', middleware.auth())
 router.get('/transfers','#controllers/extrato_controller.list')
+router.get('/saldo', '#controllers/conta_controller.saldo').use(middleware.auth({ guards: ['api'] }))
 
 
 router.group(() => {

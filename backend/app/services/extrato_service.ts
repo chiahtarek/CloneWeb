@@ -8,4 +8,6 @@ export class ExtratoService extends BaseCrudService<Extrato, ExtratoRepository> 
   constructor(repository: ExtratoRepository) {
     super(repository)
   }
+
+  
 }

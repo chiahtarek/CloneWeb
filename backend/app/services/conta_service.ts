@@ -49,5 +49,8 @@ export class ContaService extends BaseCrudService<Conta, ContaRepository> {
 
     })
   }
+  async getSaldo(userId: number): Promise<number> {
+  return await this.repository.getSaldoByUserId(userId)
+}
 
 }

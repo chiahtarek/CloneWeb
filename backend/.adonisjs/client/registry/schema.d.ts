@@ -355,6 +355,18 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'conta.saldo': {
+    methods: ["GET","HEAD"]
+    pattern: '/saldo'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'conta.index': {
     methods: ["GET","HEAD"]
     pattern: '/conta'

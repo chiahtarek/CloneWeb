@@ -42,6 +42,7 @@ export interface ApiDefinition {
     list: typeof routes['extrato.list']
   }
   conta: {
+    saldo: typeof routes['conta.saldo']
     index: typeof routes['conta.index']
     create: typeof routes['conta.create']
     store: typeof routes['conta.store']

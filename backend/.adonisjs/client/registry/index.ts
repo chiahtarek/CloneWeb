@@ -180,6 +180,12 @@ const routes = {
     tokens: [{"old":"/transfers","type":0,"val":"transfers","end":""}],
     types: placeholder as Registry['extrato.list']['types'],
   },
+  'conta.saldo': {
+    methods: ["GET","HEAD"],
+    pattern: '/saldo',
+    tokens: [{"old":"/saldo","type":0,"val":"saldo","end":""}],
+    types: placeholder as Registry['conta.saldo']['types'],
+  },
   'conta.index': {
     methods: ["GET","HEAD"],
     pattern: '/conta',
