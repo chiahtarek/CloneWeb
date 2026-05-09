@@ -38,6 +38,9 @@ export interface ApiDefinition {
     update: typeof routes['matriculas.update']
     destroy: typeof routes['matriculas.destroy']
   }
+  extrato: {
+    list: typeof routes['extrato.list']
+  }
   conta: {
     index: typeof routes['conta.index']
     create: typeof routes['conta.create']

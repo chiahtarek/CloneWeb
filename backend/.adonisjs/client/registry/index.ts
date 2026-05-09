@@ -174,6 +174,12 @@ const routes = {
     tokens: [{"old":"/matriculas/:id","type":0,"val":"matriculas","end":""},{"old":"/matriculas/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['matriculas.destroy']['types'],
   },
+  'extrato.list': {
+    methods: ["GET","HEAD"],
+    pattern: '/transfers',
+    tokens: [{"old":"/transfers","type":0,"val":"transfers","end":""}],
+    types: placeholder as Registry['extrato.list']['types'],
+  },
   'conta.index': {
     methods: ["GET","HEAD"],
     pattern: '/conta',

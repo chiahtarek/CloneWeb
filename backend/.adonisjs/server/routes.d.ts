@@ -32,6 +32,7 @@ export type ScannedRoutes = {
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'extrato.list': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.store': { paramsTuple?: []; params?: {} }
@@ -64,6 +65,7 @@ export type ScannedRoutes = {
     'matriculas.create': { paramsTuple?: []; params?: {} }
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'extrato.list': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
@@ -88,6 +90,7 @@ export type ScannedRoutes = {
     'matriculas.create': { paramsTuple?: []; params?: {} }
     'matriculas.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'matriculas.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'extrato.list': { paramsTuple?: []; params?: {} }
     'conta.index': { paramsTuple?: []; params?: {} }
     'conta.create': { paramsTuple?: []; params?: {} }
     'conta.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

@@ -11,6 +11,7 @@ import DisciplinasCreate from './pages/disciplinas/create'
 import DisciplinasEdit from './pages/disciplinas/edit'
 import Register from './pages/register'
 import Transfer from "./pages/transfer"
+import Extrato from "./pages/extrato"
 
 
 const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
     {
         path:"/transfer", 
         element: <Transfer/>
+    },
+    {
+        path:"/transfers", 
+        element: <Extrato/>
     }
 ])
 

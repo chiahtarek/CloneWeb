@@ -11,6 +11,7 @@ export const controllers = {
   Conta: () => import('#controllers/conta_controller'),
   Cursos: () => import('#controllers/cursos_controller'),
   Disciplinas: () => import('#controllers/disciplinas_controller'),
+  Extrato: () => import('#controllers/extrato_controller'),
   interfaces: {
     BaseCrudInterface: () => import('#controllers/interfaces/base_crud_interface'),
     PolicyInterface: () => import('#controllers/interfaces/policy_interface'),

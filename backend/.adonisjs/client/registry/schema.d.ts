@@ -343,6 +343,18 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'extrato.list': {
+    methods: ["GET","HEAD"]
+    pattern: '/transfers'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'conta.index': {
     methods: ["GET","HEAD"]
     pattern: '/conta'

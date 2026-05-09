@@ -18,6 +18,7 @@ router.resource('cursos', '#controllers/cursos_controller').use('*', middleware.
 router.resource('alunos', '#controllers/alunos_controller').use('*', middleware.auth())
 router.resource('disciplinas', '#controllers/disciplinas_controller').use('*', middleware.auth())
 router.resource('matriculas', '#controllers/matriculas_controller').use('*', middleware.auth())
+router.get('/transfers','#controllers/extrato_controller.list')
 
 
 router.group(() => {
