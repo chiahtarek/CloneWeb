@@ -21,7 +21,7 @@ export const registerValidator = vine.compile(
       return !!role
     }),
 
-    // 👇 AQUI está o que faltava
+    
     endereco: vine
       .object({
         rua: vine.string().optional(),
